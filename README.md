@@ -1,8 +1,6 @@
 # attack-navigator-docker
 A simple Docker container that serves the MITRE ATT&amp;CK Navigator web app
 
-[![Target’s CFC-Open-Source Slack](https://cfc-slack-inv.herokuapp.com/badge.svg?colorA=155799&colorB=159953)](https://cfc-slack-inv.herokuapp.com/)
-
 ## Prerequisites
 
 You really just need Docker and an Internet connection.
@@ -11,7 +9,7 @@ You really just need Docker and an Internet connection.
 
 First, check out the code:
 
-    git clone --recurse-submodules https://github.com/target/attack-navigator-docker.git
+    git clone --recurse-submodules https://github.com/mpgough/attack-navigator-docker.git
 
 Now just change directory into the repo and run `make`:
 
@@ -30,10 +28,8 @@ Next, we call `docker build` with a very simple `Dockerfile` that just creates a
 
 ## Running the Container
 
-You have two options.  First, you can change directory into the repo and just run `make run` to start up the container with the most common options.  Then just point your browser to [http://localhost:80](http://localhost:80) to access the Navigator.  This will run the image version tagged as ":dev", which is typically the last version you built.
+You can run the container manually:
 
-Alternatively, if you're Docker friendly, you can run the container manually:
-
-    docker run -it -p 80:80 --name attacknav davidjbianco/attacknav:dev
+    docker run -it -p 80:80 --name attacknav mpgough/attacknav:dev
 
 As written, this is the same command the the `Makefile` uses to start the container, but this way you have the option to specify the exact Docker options you want.  
