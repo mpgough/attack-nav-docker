@@ -20,7 +20,7 @@ Now just change directory into the repo and run `make`:
 
 By default, the `Makefile` will pull down docker containers for `nginx` (which is the base of the final image we build) and `node`, which is used during the build process.  It will also update the MITRE ATT&CK Navigator app's repo, which we include here as a submodule.  Thus, whenever you build, you'll get the latest published version of the app.
 
-Once the images are staged and the app code updated, we run an ephemeral copy of the `node` container, in which we mount and build the app.  The container is automatically deleted at the end of the run, but it leaves the compiled app in `attack-navigator/nav-app/dist`.  
+Once the images are staged and the app code updated, we run an ephemeral copy of the `node` container, in which we mount and build the app.  The container is automatically deleted at the end of the run, but it leaves the compiled app in `attack-navigator/nav-app/dist`which is finally copied to `/usr/share/nginx/html`.  
 
 Next, we call `docker build` with a very simple `Dockerfile` that just creates an `nginx` container with the app code copied into the web content directory.  That's really all that's necessary to get this app running in Docker.
 
