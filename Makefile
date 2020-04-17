@@ -1,10 +1,10 @@
 DATE=`date '+%Y%m%d'`
 IMAGE_NAME="attacknav"
 REPO="davidjbianco"
-NODE_VERSION="10-slim"
+NODE_VERSION="latest"
 
 build:	Dockerfile refresh
-	docker run -it --rm -v `pwd`/attack-navigator:/attack-navigator node:$(NODE_VERSION) /bin/sh -c 'cd /attack-navigator/nav-app && npm install && npm install node-sass && npm run build'
+	docker run -it --rm -v `pwd`/attack-navigator:/attack-navigator node:$(NODE_VERSION) /bin/sh -c 'cd /attack-navigator/nav-app && npm install --unsafe-perm && npm install node-sass --force && npm run build'
 	docker build -t $(REPO)/$(IMAGE_NAME):dev -t $(REPO)/$(IMAGE_NAME):$(DATE) .
 
 refresh:
